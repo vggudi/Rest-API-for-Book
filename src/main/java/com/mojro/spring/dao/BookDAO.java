@@ -8,9 +8,13 @@ import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
-import com.mojro.spring.model.Book;
+import com.mojro.spring.entity.Book;
+
 @Repository
 public class BookDAO {
+	
+
+
 	private static final Map<String, Book> bookMap = new HashMap<String, Book>();
 
 	static {
@@ -21,7 +25,6 @@ public class BookDAO {
 		Book book1 = new Book("A101", "Java", "John", 598.25);
 		Book book2 = new Book("A102", "Python", "Rahul", 899.95);
 		Book book3 = new Book("A103", "JavaScript", "Venki", 5898.60);
-
 		bookMap.put(book1.getISBN(), book1);
 		bookMap.put(book2.getISBN(), book2);
 		bookMap.put(book3.getISBN(), book3);

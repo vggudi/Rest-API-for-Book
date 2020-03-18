@@ -1,3 +1,5 @@
 com\mojro\spring\controller\BookController.class
 com\mojro\spring\dao\BookDAO.class
 com\mojro\spring\model\Book.class
+com\mojro\spring\entity\Book.class
+com\mojro\spring\repository\BookRepository.class

@@ -4,24 +4,22 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-
 import com.mojro.spring.dao.BookDAO;
-import com.mojro.spring.model.Book;
+import com.mojro.spring.entity.Book;
 
 @RestController
 @RequestMapping("/book")
 public class BookController {
 	@Autowired
 	private BookDAO bookDAO;
+	
+	
 
 	@RequestMapping("/")
 	@ResponseBody
@@ -44,8 +42,8 @@ public class BookController {
 
 	@RequestMapping(value = "/book", method = RequestMethod.POST, produces = { MediaType.APPLICATION_JSON_VALUE })
 	public @ResponseBody Book addBook(@RequestBody Book book) {
-
 		return bookDAO.addBook(book);
+		
 
 	}
 
@@ -59,7 +57,7 @@ public class BookController {
 	 */
 
 	@RequestMapping(value = "/book", method = RequestMethod.PUT, produces = { MediaType.APPLICATION_JSON_VALUE })
-	public 	@ResponseBody Book updateBook(@RequestBody Book book) {
+	public @ResponseBody Book updateBook(@RequestBody Book book) {
 
 		return bookDAO.updateBook(book);
 	}

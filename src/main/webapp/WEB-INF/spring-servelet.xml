@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:jpa="http://www.springframework.org/schema/data/jpa"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"     xmlns:context="http://www.springframework.org/schema/context"
 xmlns:mvc="http://www.springframework.org/schema/mvc"     xmlns:tx="http://www.springframework.org/schema/tx"
 xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
@@ -7,12 +8,24 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
-<mvc:annotation-driven />
-
-	
-	
+<mvc:annotation-driven />	
 <context:component-scan base-package="com.mojro.spring" />
-
+<tx:annotation-driven />
+	
+	<!-- Drives transactions using local JPA APIs -->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+    
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
+        <property name="persistenceUnitName" value="exampleHibernateJPA" />
+    </bean>
+    
+    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+	
+	<!-- DAO configs -->
+	<bean id="bookDAO" class="com.mojro.spring.dao.BookDAO"/>
+	<bean id="bookController" class="com.mojro.spring.controller.BookController"/>
 
 	
 	

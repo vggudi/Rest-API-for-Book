@@ -1,5 +1,6 @@
 package com.mojro.spring.model;
 
+
 public class Book {
 	private String ISBN;
 	private String name;
@@ -17,6 +18,7 @@ public class Book {
 		this.price = price;
 	}
 
+	
 	public String getISBN() {
 		return ISBN;
 	}
@@ -24,7 +26,7 @@ public class Book {
 	public void setISBN(String ISBN) {
 		this.ISBN = ISBN;
 	}
-
+	
 	public String getName() {
 		return name;
 	}
@@ -32,7 +34,7 @@ public class Book {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
 	public String getAuthor() {
 		return author;
 	}
@@ -40,7 +42,7 @@ public class Book {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
-
+	
 	public double getPrice() {
 		return price;
 	}
